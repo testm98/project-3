@@ -60,7 +60,6 @@
    balls();
    bird();
    buttons();
-   /*rat();*/
  }
  
  void table( float left, float top, float right, float bottom ) {
@@ -161,10 +160,10 @@
     fill(r,g,b);
     triangle( x,y, x-w,y-5, x-w,y+5 );
     wingUp= int(frameCount/40) %2 >0;
-    fill(255);
+    fill(180);
     if (wingUp) {
       triangle( x-w/3,y, x-w*2/3,y, x-w/2,y-40 );
-    }else{
+    } else{
       triangle( x-w/3,y, x-w*2/3,y, x-w/2,y+40 );
     }
   }
