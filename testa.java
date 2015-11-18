@@ -3,7 +3,7 @@
 //MATT TESTA//
  
  Ball a,b,c,d,e;
- Bird bluejay;
+ Bird jay;
  float x,y; 
  
  String title= "Project 3";
@@ -45,29 +45,19 @@
    e.g=0;
    e.b=0;
    
-   bluejay= new Bird();
+   jay= new Bird();
    jay.b=255;
    
  
   }
 
- 
- 
- void draw() {
+  void draw() {
    background(220,160,120);
    rectMode( CORNERS );
    table( left, top, right, bottom);
    balls();
-   bird();
+   Bird();
    buttons();
- }
- 
- void table( float left, float top, float right, float bottom ) {
-   fill( tableRed, tableGreen, tableBlue );
-   strokeWeight(20);
-   stroke( 110, 20, 10);
-   rect(left-10, top-10, right+10, bottom+10);
-   
    if (wall) {
      float middle= ( left + right)/2;
      stroke( 255,0,0,60);
@@ -77,6 +67,15 @@
   strokeWeight(1);
  }
  
+ void table( float left, float top, float right, float bottom ) {
+   fill( tableRed, tableGreen, tableBlue );
+   strokeWeight(20);
+   stroke( 110, 20, 10);
+   rect(left-10, top-10, right+10, bottom+10);
+ }
+   
+   
+ 
  void balls() {
    collision( a,b );
    collision( a,c );
@@ -85,7 +84,7 @@
    
    collision( b,c);
    collision( b,d);
-   collision(b,e);
+   collision( b,e);
    
    collision(c,d);
    collision(c,e);
@@ -104,16 +103,9 @@
    d.show();
    e.show();
  }
-   
-   void collision( Ball a, Ball b) {
-   if (a.hit (b.x,b.y) ) {
-     tmp=a.dx; a.dx=b.dx; b.dx=tmp;
-     tmp=a.dy; p.dy=q.dy; q.dy=tmp;
-    }
-   }
-     
-  void birds() {
-    bluejay.move();
+ 
+  void Bird() {
+    jay.move();
   }
   
   void keyPressed() {
@@ -142,6 +134,12 @@
      if (x>width || x<50) { dx= -dx; }
      if( y>height || y<250) { dy= -dy; }
    }
+    void collision( Ball a, Ball b) {
+   if (a.hit (b.x,b.y) ) {
+     tmp=a.dx; a.dx=b.dx; b.dx=tmp;
+     tmp=a.dy; a.dy=q.dy; b.dy=tmp;
+    }
+   }
    void reset() {
      x = random( width/2, width-100 );
     y=  random( horizon+0, height-50 );
@@ -155,6 +153,7 @@
    float w=40;
    int r,g,b;
    boolean wingUp=false;
+ }
    
    void show() {
     fill(r,g,b);
